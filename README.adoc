@@ -1,0 +1,54 @@
+= Kubernetes Spring Boot MS Communication Example
+
+An Example Project for various inter microservices communication in spring boot deployed on Kubernetes
+
+== Protocols/Frameworks
+
+- GRPC
+- RSocket
+- CXF
+- Feign-Ribbon
+- WEBFLUX(Webclient)
+- Rest Template
+
+TODO:: Currently all the above are communicating via kubernetes service, and the server side loadbalancer, need to
+validate using client side loadbalancer
+
+== How to run
+
+- go to `protocol/framework` module build the `server` and `client` docker image.
++
+----
+$ docker build . -t kprasad99/grpc-person-server
+$ docker build . -t kprasad99/grpc-person-client
+----
+
+- go to corresponding charts directory and deploy
++
+----
+$ helm install grpc-person-server .
+$ helm install grpc-person-client .
+----
+
+- access the url using ingress `http://grpc.person.k8s.local/api/person`, replace `module` for each deployment.
+ 
+ 
+== Perform Load test.
+
+We can use `fortio` to perform performance test.
+
+- Start the fortio docker instance.
++
+----
+$ docker run -p 8080:8080 -p 8079:8079 fortio/fortio server
+---- 
+
+- Open the browser and connect to ui at port `8080`
+
+- Now fill-in the above url and start load testing.
+
+== Tools
+
+- https://hub.docker.com/r/istio/fortio[fortio - load test]
+- https://github.com/making/rsc[rsc - rsocket client]
+- https://github.com/uw-labs/bloomrpc[grpc-client]  

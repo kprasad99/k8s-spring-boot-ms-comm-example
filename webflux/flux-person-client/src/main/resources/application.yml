@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: flux-person-client
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+services:
+  clients:
+    person:
+      name: flux-person-server
+      # testing purpose
+      #url: http://localhost:8080/
+  

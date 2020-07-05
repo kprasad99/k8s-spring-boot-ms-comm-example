@@ -1,0 +1,38 @@
+{{- if and .Values.roles.create .Values.serviceAccount.create -}}
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "rsocket-person-server.serviceRoleName" . }}-reader
+  labels:
+    {{- include "rsocket-person-server.labels" . | nindent 4 }}
+  {{- with .Values.roles.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+rules:
+  - apiGroups: ["", "extensions", "apps"]
+    resources: ["configmaps", "pods", "services", "endpoints", "secrets"]
+    verbs: ["get", "list", "watch"]
+
+---
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "rsocket-person-server.serviceRoleName" . }}-reader-binding
+  labels:
+    {{- include "rsocket-person-server.labels" . | nindent 4 }}
+  {{- with .Values.roles.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "rsocket-person-server.serviceAccountName" . }}
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: {{ include "rsocket-person-server.serviceRoleName" . }}-reader
+  apiGroup: ""
+
+{{- end}}

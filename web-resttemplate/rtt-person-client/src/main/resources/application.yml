@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: rtt-person-client
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+services:
+  clients:
+    person:
+      name: rtt-person-server
+      # testing purpose
+      #url: http://localhost:8080/
+  

@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.kprasad99</groupId>
+        <artifactId>k8s-spring-boot-ms-example</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>webflux</artifactId>
+    <packaging>pom</packaging>
+    <name>webflux</name>
+    <description>Spring Boot WebFlux</description>
+
+    <modules>
+        <module>flux-person-server</module>
+        <module>flux-person-client</module>
+    </modules>
+</project>

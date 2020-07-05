@@ -1,0 +1,13 @@
+#spring:
+  #main:
+  #  cloud-platform: kubernetes
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true

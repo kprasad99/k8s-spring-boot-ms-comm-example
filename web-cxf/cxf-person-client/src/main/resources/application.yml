@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: cxf-person-client
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+cxf:
+  jaxrs:
+    client:
+      address: http://localhost:8080
+      classes-scan-packages: sample.rs.service
+      
+#cxf.jaxrs.client.address: 
+#cxf.jaxrs.client.classes-scan-packages: io.github.kprasad99.person.client

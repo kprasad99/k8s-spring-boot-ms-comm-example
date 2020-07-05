@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: feign-person-server
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true

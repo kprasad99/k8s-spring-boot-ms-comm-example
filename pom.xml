@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.kprasad99</groupId>
+    <artifactId>k8s-spring-boot-ms-example</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>k8s-spring-boot-ms-example</name>
+    <description>An example project consisting various inter-ms
+        communication mechansim using Spring Boot</description>
+
+    <modules>
+        <module>web-feign-ribbon</module>
+        <module>web-resttemplate</module>
+        <module>web-cxf</module>
+        <module>grpc</module>
+        <module>webflux</module>
+        <module>rsocket</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+</project>

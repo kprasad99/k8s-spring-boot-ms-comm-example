@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: cxf-person-server
+cxf:
+  jaxrs:
+    component-scan: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true

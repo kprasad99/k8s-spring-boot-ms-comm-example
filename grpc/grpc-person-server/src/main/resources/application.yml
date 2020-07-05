@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: grpc-person-server
+  #main:
+  #  cloud-platform: kubernetes
+grpc:
+  port: 6565
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
