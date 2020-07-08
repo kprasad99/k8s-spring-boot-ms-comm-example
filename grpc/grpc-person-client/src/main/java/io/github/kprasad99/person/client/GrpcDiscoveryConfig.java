@@ -7,6 +7,8 @@ import io.grpc.ManagedChannelBuilder;
 import java.util.Objects;
 import java.util.Optional;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -19,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableDiscoveryClient
 @EnableConfigurationProperties(ServiceInfo.class)
+@Slf4j
 public class GrpcDiscoveryConfig {
 
     @ConditionalOnProperty(prefix = "spring.main", name = "cloud-platform", havingValue = "kubernetes")
@@ -33,6 +36,8 @@ public class GrpcDiscoveryConfig {
             return instance.map(e -> {
                 int port = Integer.parseInt(e.getMetadata().get(service.getPort()));
                 String host = e.getHost();
+                log.info("Host is {}", e.getHost());
+                log.info("Port is {}", port);
                 return ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
             }).orElseThrow();
         } else {

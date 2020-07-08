@@ -11,9 +11,6 @@ An Example Project for various inter microservices communication in spring boot 
 - WEBFLUX(Webclient)
 - Rest Template
 
-TODO:: Currently all the above are communicating via kubernetes service, and the server side loadbalancer, need to
-validate using client side loadbalancer
-
 == How to run
 
 - go to `protocol/framework` module build the `server` and `client` docker image.

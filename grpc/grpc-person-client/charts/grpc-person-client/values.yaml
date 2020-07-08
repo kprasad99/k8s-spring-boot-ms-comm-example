@@ -16,6 +16,7 @@ fullnameOverride: ""
 
 envs:
   services.clients.person.name: "grpc-person-server"
+  services.clients.person.port: "port.grpc"
 
 serviceAccount:
   # Specifies whether a service account should be created
