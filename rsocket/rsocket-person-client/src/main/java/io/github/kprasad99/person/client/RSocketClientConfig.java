@@ -2,8 +2,6 @@ package io.github.kprasad99.person.client;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.rsocket.core.RSocketConnector;
-import io.rsocket.micrometer.MicrometerDuplexConnectionInterceptor;
-import io.rsocket.micrometer.MicrometerRSocketInterceptor;
 import io.rsocket.transport.ClientTransport;
 
 import java.time.Duration;
@@ -35,11 +33,6 @@ public class RSocketClientConfig {
                     @Override
                     public void configure(RSocketConnector connector) {
                         connector.reconnect(Retry.backoff(5, Duration.ofMillis(2500)));
-                        connector.interceptors(configurer -> {
-                            configurer.forConnection(new MicrometerDuplexConnectionInterceptor(meterRegistry));
-                            configurer.forRequester(new MicrometerRSocketInterceptor(meterRegistry));
-                            configurer.forResponder(new MicrometerRSocketInterceptor(meterRegistry));
-                        });
                     }
                 }).connect(clientTransport).log();
 //      rsocketRequester.rsocket().onClose().doOnError(error -> log.warn("Connection CLOSED"))

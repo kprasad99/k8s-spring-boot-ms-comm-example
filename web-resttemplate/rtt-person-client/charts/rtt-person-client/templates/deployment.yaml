@@ -38,7 +38,7 @@ spec:
               value: "kubernetes"
             {{- range $key, $val := .Values.envs }}
             - name: {{ $key }}
-              value: {{ $value | quote }}  
+              value: {{ $val | quote }}  
             {{- end }}
           ports:
             - name: http

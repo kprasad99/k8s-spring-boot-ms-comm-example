@@ -9,14 +9,16 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 
-@Controller
+@RestController
+@RequestMapping("/api/proto/db/person")
 @Slf4j
-public class PersonRSocketService {
+public class PersonProtoRestService {
 
     @Autowired
     private PersonDao personDao;
@@ -24,7 +26,7 @@ public class PersonRSocketService {
     @Autowired
     private ModelMapper mapper;
 
-    @MessageMapping("io.github.kprasad99.proto.person")
+    @GetMapping(produces = "application/x-protobuf")
     public Flux<Person> getProto() {
         log.info("Listing all persons");
         return Flux.fromIterable(personDao.findAll()).map(toProto).map(Person.Builder::build);

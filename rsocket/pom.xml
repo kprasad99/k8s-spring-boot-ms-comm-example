@@ -13,6 +13,7 @@
 
     <modules>
         <module>rsocket-person-server</module>
+        <module>rsocket-person-client</module>
     </modules>
 
 </project>

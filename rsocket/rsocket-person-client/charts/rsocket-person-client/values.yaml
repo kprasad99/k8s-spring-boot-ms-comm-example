@@ -15,8 +15,9 @@ nameOverride: "rsocket-person-client"
 fullnameOverride: ""
 
 envs:
-  services.clients.person.name: "rsocket-person-server"
-  services.clients.person.port: "port.rsocket"
+  discovery.services.person-rsocket.name: "rsocket-person-server"
+  discovery.services.person-rsocket.servicePort: "port.rsocket"
+  discovery.services.person-flux: "rsocket-person-server"
 
 serviceAccount:
   # Specifies whether a service account should be created
