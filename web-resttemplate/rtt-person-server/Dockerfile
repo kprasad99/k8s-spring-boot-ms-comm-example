@@ -1,3 +1,6 @@
+# FROM openjdk:11-jre-slim
+# FROM amazoncorretto:11
+
 FROM maven:3-jdk-11 as builder
 
 COPY ./src /app-build/src

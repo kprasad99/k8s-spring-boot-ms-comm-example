@@ -67,7 +67,7 @@ Create the name of the role to use
 */}}
 {{- define "flux-person-client.serviceRoleName" -}}
 {{- if .Values.roles.create }}
-{{- default (include "flux-client-server.fullname" .) .Values.roles.name }}
+{{- default (include "flux-person-client.fullname" .) .Values.roles.name }}
 {{- else }}
 {{- default "default" .Values.roles.name }}
 {{- end }}

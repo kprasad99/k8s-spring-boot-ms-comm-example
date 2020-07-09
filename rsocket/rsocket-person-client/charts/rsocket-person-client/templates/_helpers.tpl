@@ -67,7 +67,7 @@ Create the name of the role to use
 */}}
 {{- define "rsocket-person-client.serviceRoleName" -}}
 {{- if .Values.roles.create }}
-{{- default (include "rsocket-client-server.fullname" .) .Values.roles.name }}
+{{- default (include "rsocket-person-client.fullname" .) .Values.roles.name }}
 {{- else }}
 {{- default "default" .Values.roles.name }}
 {{- end }}

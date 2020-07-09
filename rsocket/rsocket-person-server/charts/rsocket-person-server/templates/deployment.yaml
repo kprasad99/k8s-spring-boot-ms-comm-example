@@ -40,6 +40,9 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+            - name: rsocket
+              containerPort: 9080
+              protocol: TCP
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness

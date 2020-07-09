@@ -17,8 +17,8 @@ spec:
       app.kubernetes.io/name: {{ include "grpc-person-client.name" . }}
   jobLabel: {{ include "grpc-person-client.name" . }}
   endpoints:
-  - port: prom-metrics
-    path: "/metrics"
+  - port: http
+    path: "/actuator/prometheus"
 ---
 
 {{- end }}

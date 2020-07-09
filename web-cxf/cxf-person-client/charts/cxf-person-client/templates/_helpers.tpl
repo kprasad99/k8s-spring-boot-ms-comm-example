@@ -67,7 +67,7 @@ Create the name of the role to use
 */}}
 {{- define "cxf-person-client.serviceRoleName" -}}
 {{- if .Values.roles.create }}
-{{- default (include "cxf-client-server.fullname" .) .Values.roles.name }}
+{{- default (include "cxf-person-client.fullname" .) .Values.roles.name }}
 {{- else }}
 {{- default "default" .Values.roles.name }}
 {{- end }}

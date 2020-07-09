@@ -3,19 +3,19 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "grpc-person-server.fullname" . }}
+  name: {{ include "flux-person-server.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "grpc-person-server.fullname" . }}
+    app.kubernetes.io/name: {{ include "flux-person-server.fullname" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-    helm.sh/chart: {{ include "grpc-person-server.chart" . }}
+    helm.sh/chart: {{ include "flux-person-server.chart" . }}
     helm.sh/release: {{ .Release.Name }}
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "grpc-person-server.name" . }}
-  jobLabel: {{ include "grpc-person-server.name" . }}
+      app.kubernetes.io/name: {{ include "flux-person-server.name" . }}
+  jobLabel: {{ include "flux-person-server.name" . }}
   endpoints:
   - port: http
     path: "/actuator/prometheus"

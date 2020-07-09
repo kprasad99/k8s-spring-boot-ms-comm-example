@@ -11,5 +11,9 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+    - port: 9080
+      targetPort: rsocket
+      protocol: TCP
+      name: rsocket
   selector:
     {{- include "rsocket-person-server.selectorLabels" . | nindent 4 }}
