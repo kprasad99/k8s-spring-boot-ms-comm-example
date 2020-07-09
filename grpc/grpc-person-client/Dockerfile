@@ -25,7 +25,7 @@ RUN /usr/lib/jvm/java-11-openjdk/bin/jlink \
         java.base,java.desktop,java.instrument,\
 java.management,java.management.rmi,java.naming,java.net.http,java.prefs,\
 java.sql,java.security.jgss,java.security.sasl,java.sql,jdk.management.agent,jdk.management,\
-jdk.unsupported \
+jdk.crypto.ec,jdk.unsupported \
     --compress 2 --strip-debug --no-header-files --no-man-pages \
     --release-info="add:IMPLEMENTOR=Karthik:IMPLEMENTOR_VERSION=jre-11" \
     --output "$JAVA_MINIMAL"
